@@ -32,8 +32,8 @@ const Navbar = () => {
   const navbarItems = [
     { url: "/", text: "Home", icon: "/home.svg", activeIcon: "/home-active.svg", hoverIcon: "/home-active.svg" },
     { url: "/plans", text: "Plans", icon: "/plans.svg", activeIcon: "/plans-active.svg", hoverIcon: "/plans-active.svg" },
-    { url: "/history", text: "History", icon: "/history.svg", activeIcon: "/history-active.svg", hoverIcon: "/history-active.svg" },
-    { url: "/profile", text: "Account", icon: "/profile.svg", activeIcon: "/profile-active.svg", hoverIcon: "/profile-active.svg" },
+    { url: "/subscription", text: "History", icon: "/history.svg", activeIcon: "/history-active.svg", hoverIcon: "/history-active.svg" },
+    { url: "/account", text: "Account", icon: "/profile.svg", activeIcon: "/profile-active.svg", hoverIcon: "/profile-active.svg" },
   ];
 
   return (
