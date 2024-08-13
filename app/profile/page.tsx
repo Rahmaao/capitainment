@@ -29,7 +29,7 @@ export default function ProfilePage() {
           </h2>
         </div>
       </button>
-      <div className="w-[1007px] h-[600px] px-4 lg:h-[500px] flex justify-between">
+      <div className="w-[1007px] h-[600px] lg:h-[500px] flex justify-between px-4">
         <ProfileContainer />
       </div>
     </main>

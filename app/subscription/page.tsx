@@ -1,4 +1,3 @@
-// app/subscription-history/page.tsx
 import Link from "next/link";
 
 const subscriptions = [
@@ -92,18 +91,14 @@ export default function SubscriptionHistory() {
                   </td>
                   <td
                     className={`py-2 px-4 border-b text-[10px] whitespace-nowrap ${
-                      sub.status === "Successful"
-                        ? "text-green-500"
-                        : "text-red-500"
+                      sub.status === "Successful" ? "text-green-500" : "text-red-500"
                     }`}
                   >
                     <Link
                       href={`/subscription-history/${sub.id}`}
                       className={`flex justify-center items-center ${
-                        sub.status === "Successful"
-                          ? "bg-[#E0F9F0]"
-                          : "bg-[#ffdbdb]"
-                      }  w-[72px] h-[26px] rounded-full`}
+                        sub.status === "Successful" ? "bg-[#E0F9F0]" : "bg-[#FFDBDB]"
+                      } w-[72px] h-[26px] rounded-full`}
                     >
                       {sub.status}
                     </Link>

@@ -4,10 +4,8 @@ const ProfileSection = () => {
   return (
     <div className="profile-section h-[474px] w-[350px] lg:w-auto flex flex-col justify-between">
       <div className="h-[50px]">
-        <h2 className="text-[20px] text-[#101828] font-medium text-left">
-          Profile
-        </h2>
-        <p className="text-[14px] text-[#777777] text-left">
+        
+        <p className="text-[14px] text-[#777777] text-left mt-4 lg:mt-0">
           Update your personal details here.{" "}
         </p>
       </div>

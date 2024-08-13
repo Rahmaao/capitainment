@@ -4,12 +4,28 @@
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
 import Btn1 from "../components/btn-1";
-import { useRouter } from 'next/router';
+import { useRouter } from "next/router";
+
+import LoginModal from "./LoginModal";
 
 const Navbar = () => {
   const [isMobile, setIsMobile] = useState(false);
   const [hoveredLink, setHoveredLink] = useState(null);
-  const [activePath, setActivePath] = useState('');
+  const [activePath, setActivePath] = useState("");
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
+
+  const handleButtonClick = () => {
+    if (isLoggedIn) {
+    } else {
+      setIsLoginModalOpen(true);
+    }
+  };
+
+  const handleLogin = () => {
+    setIsLoggedIn(true);
+    setIsLoginModalOpen(false);
+  };
 
   useEffect(() => {
     const handleResize = () => {
@@ -30,23 +46,53 @@ const Navbar = () => {
   }, []);
 
   const navbarItems = [
-    { url: "/", text: "Home", icon: "/home.svg", activeIcon: "/home-active.svg", hoverIcon: "/home-active.svg" },
-    { url: "/plans", text: "Plans", icon: "/plans.svg", activeIcon: "/plans-active.svg", hoverIcon: "/plans-active.svg" },
-    { url: "/subscription", text: "History", icon: "/history.svg", activeIcon: "/history-active.svg", hoverIcon: "/history-active.svg" },
-    { url: "/account", text: "Account", icon: "/profile.svg", activeIcon: "/profile-active.svg", hoverIcon: "/profile-active.svg" },
+    {
+      url: "/",
+      text: "Home",
+      icon: "/home.svg",
+      activeIcon: "/home-active.svg",
+      hoverIcon: "/home-active.svg",
+    },
+    {
+      url: "/plans",
+      text: "Plans",
+      icon: "/plans.svg",
+      activeIcon: "/plans-active.svg",
+      hoverIcon: "/plans-active.svg",
+    },
+    {
+      url: "/subscription",
+      text: "History",
+      icon: "/history.svg",
+      activeIcon: "/history-active.svg",
+      hoverIcon: "/history-active.svg",
+    },
+    {
+      url: "/account",
+      text: "Account",
+      icon: "/profile.svg",
+      activeIcon: "/profile-active.svg",
+      hoverIcon: "/profile-active.svg",
+    },
   ];
 
   return (
-    <div className={`bg-white lg:pr-8 ${isMobile ? "fixed bottom-0 left-0 right-0" : "relative"} flex justify-between text-white h-[84px] w-full shadow-[12px_4px_4px_4px_#E5E5E540] z-50`}>
-      {/* Logo */}
+    <div
+      className={`bg-white lg:pr-8 ${
+        isMobile ? "fixed bottom-0 left-0 right-0" : "relative"
+      } flex justify-between text-white h-[84px] w-full shadow-[12px_4px_4px_4px_#E5E5E540] z-50`}
+    >
       <a href="/" className="w-[211px] h-full relative hidden md:flex">
         <Image
           src="/logo.svg"
           alt="Logo"
-          layout="fill"
-          objectFit="contain"
-          objectPosition="center"
+          width={211}
+          height={40}
           priority
+          style={{
+            objectFit: "contain",
+            objectPosition: "center",
+          }}
         />
       </a>
 
@@ -75,7 +121,13 @@ const Navbar = () => {
                   width={24}
                   height={24}
                 />
-                <span className={`text-black ${activePath === item.url || hoveredLink === item.url ? "text-[#BC1823]" : ""}`}>
+                <span
+                  className={`text-black ${
+                    activePath === item.url || hoveredLink === item.url
+                      ? "text-[#BC1823]"
+                      : ""
+                  }`}
+                >
                   {item.text}
                 </span>
               </div>
@@ -85,7 +137,11 @@ const Navbar = () => {
       )}
 
       {/* Navigation Links (Shown at Top on Desktop) */}
-      <div className={`w-[410px] h-full flex ${isMobile ? "hidden lg:flex justify-between" : "justify-between"} items-center`}>
+      <div
+        className={`w-[410px] h-full flex ${
+          isMobile ? "hidden lg:flex justify-between" : "justify-between"
+        } items-center`}
+      >
         {navbarItems.map((item, index) => (
           <a
             key={index}
@@ -108,7 +164,13 @@ const Navbar = () => {
                 width={24}
                 height={24}
               />
-              <span className={`text-black ${activePath === item.url || hoveredLink === item.url ? "text-[#BC1823]" : ""}`}>
+              <span
+                className={`text-black ${
+                  activePath === item.url || hoveredLink === item.url
+                    ? "text-[#BC1823]"
+                    : ""
+                }`}
+              >
                 {item.text}
               </span>
             </div>
@@ -124,9 +186,20 @@ const Navbar = () => {
             className="w-[178px] h-[40px] border border-[#2F2B431A] rounded-xl outline-none text-black text-center placeholder:text-black"
             placeholder="Search"
           />
-          <Btn1 text="Login" />
+          <button
+            onClick={() => handleButtonClick()}
+            // href="#"
+            className={`w-[131px] h-[40px] bg-[#BC1823] rounded-xl flex items-center justify-center text-white font-medium text-sm hover:bg-[#f9858d] transition duration-300`}
+          >
+            Login
+          </button>
         </div>
       )}
+      <LoginModal
+        isOpen={isLoginModalOpen}
+        onClose={() => setIsLoginModalOpen(false)}
+        onLogin={handleLogin}
+      />
     </div>
   );
 };

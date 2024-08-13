@@ -1,16 +1,24 @@
+"use client";
 
-// @ts-nocheck
 import React, { useState, useRef, useEffect } from "react";
 import Image from "next/image";
+import back from "@/public/Back.svg";
+import { useRouter } from "next/navigation";
 
-interface OtpModalProps {
+interface VerifyOtpProps {
   isOpen: boolean;
   onClose: () => void;
   onVerify: () => void;
   onResend: () => void; // Add a new prop for the resend functionality
 }
 
-const OtpModal: React.FC<OtpModalProps> = ({ isOpen, onClose, onVerify, onResend }) => {
+const VerifyOtp: React.FC<VerifyOtpProps> = ({
+  isOpen,
+  onClose,
+  onVerify,
+  onResend,
+}) => {
+  const router = useRouter();
   const [otp, setOtp] = useState(Array(6).fill(""));
   const [resendTimeout, setResendTimeout] = useState(30); // Countdown for the resend button
   const inputRefs = useRef<(HTMLInputElement | null)[]>([]);
@@ -35,8 +43,10 @@ const OtpModal: React.FC<OtpModalProps> = ({ isOpen, onClose, onVerify, onResend
 
   useEffect(() => {
     // Focus on the first input field when the component mounts
-    inputRefs.current[0]?.focus();
-  }, []);
+    if (isOpen) {
+      inputRefs.current[0]?.focus();
+    }
+  }, [isOpen]);
 
   useEffect(() => {
     // Handle the countdown for the resend button
@@ -46,31 +56,34 @@ const OtpModal: React.FC<OtpModalProps> = ({ isOpen, onClose, onVerify, onResend
     }
   }, [resendTimeout]);
 
-  if (!isOpen) return null;
-
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50">
-      <div className="w-[300px] md:w-[350px] bg-white h-[380px] p-6 rounded-lg">
+    <div className="container bg-[#FAFAFA] flex justify-center items-center pb-[84px] lg:pb-0 h-screen">
+      <div className="w-[300px] md:w-[350px] border-[#E9E9E9] border bg-white h-[380px] p-6 rounded-lg">
         <div className="h-[320px] flex flex-col justify-between">
-          <div className="flex justify-between border-b border-[#E9E9E9] items-start w-full h-[55px]">
-            <h2 className="font-bold text-[20px] text-black">Enter OTP</h2>
-            <button onClick={onClose}>
-              <div className="flex items-center">
+          <button
+            className="w-full border-b flex items-center"
+            onClick={() => router.back()} // Add the onClick handler to go back
+          >
+            <div className="w-[50px] h-[50px] flex justify-center items-center">
               <Image
-                  src="/exit.svg" // Ensure this path is correct
-                  alt="Close Icon"
-                  width={24}
-                  height={24}
-                  className="inline-block align-middle"
-                />
-              </div>
-            </button>
-          </div>
+                src={back}
+                alt="Back"
+                width={30}
+                height={30}
+                className="rounded-full"
+              />
+            </div>
+            <div className="min-w-[125px] h-[50px] flex items-center pl-2">
+              <h2 className="text-[18px] text-[#0A0A0A] font-bold text-left">
+                Verify Phone Number
+              </h2>
+            </div>
+          </button>
           <div className="w-full">
-                <p className="text-xs text-[#777777]">
-                Please login your account with the code sent to +234********
-                </p>
-              </div>
+            <p className="text-xs text-[#777777]">
+              Please log in to your account with the code sent to +234********
+            </p>
+          </div>
           <div className="w-full flex justify-between mt-4">
             {otp.map((value, index) => (
               <input
@@ -80,7 +93,10 @@ const OtpModal: React.FC<OtpModalProps> = ({ isOpen, onClose, onVerify, onResend
                 value={value}
                 onChange={(e) => handleChange(e.target.value, index)}
                 className="w-[40px] h-[40px] border border-[#2F2B431A] rounded-md outline-none text-black text-center"
-                ref={(el) => (inputRefs.current[index] = el)}
+                ref={(el) => {
+                  inputRefs.current[index] = el;
+                }}
+                aria-label={`OTP digit ${index + 1}`}
               />
             ))}
           </div>
@@ -103,9 +119,9 @@ const OtpModal: React.FC<OtpModalProps> = ({ isOpen, onClose, onVerify, onResend
           </div>
           <div className="w-full h-[70px] flex items-center justify-center mt-4">
             <a
-              href="#"
+              href="/success"
               className="w-full h-10 bg-[#BC1823] rounded-xl flex items-center justify-center text-white font-medium text-sm hover:bg-[#f9858d] transition duration-300"
-              onClick={onVerify}
+              //   onClick={onVerify}
             >
               Verify
             </a>
@@ -116,4 +132,4 @@ const OtpModal: React.FC<OtpModalProps> = ({ isOpen, onClose, onVerify, onResend
   );
 };
 
-export default OtpModal;
+export default VerifyOtp;

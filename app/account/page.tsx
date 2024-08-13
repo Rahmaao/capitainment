@@ -1,7 +1,7 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { useRouter } from "next/navigation"; // Import from next/navigation in the app directory
+import { useState } from "react";
+import { useRouter } from "next/navigation";
 import useIsMobile from "@/hooks/useIsMobile";
 import Image from "next/image";
 import profilePic from "@/public/prof.svg";
@@ -44,13 +44,7 @@ export default function AccountPage() {
     <main className="bg-[#FAFAFA] w-full min-h-screen lg:px-10 pb-[84px] lg:pb-0 flex lg:flex-row flex-col justify-between lg:justify-center lg:items-center">
       <div className="lg:hidden w-full border-b h-[100px] flex items-center">
         <div className="w-[50px] h-[50px] flex justify-center items-center">
-          {/* <Image
-            src={back}
-            alt="Profile Picture"
-            width={40}
-            height={40}
-            className="rounded-full"
-          /> */}
+          
         </div>
         <div className="min-w-[125px] h-[50px] flex items-center pl-2">
           <h2 className="text-[20px] text-[#0A0A0A] font-bold text-left">
@@ -69,7 +63,7 @@ export default function AccountPage() {
                     alt="Profile Picture"
                     width={50}
                     height={50}
-                    className="rounded-full"
+                    style={{ borderRadius: '50%' }}
                   />
                 </div>
                 <div className="min-w-[125px] h-[50px]">
@@ -90,14 +84,14 @@ export default function AccountPage() {
                 activeTab === "profile" && !isMobile ? "bg-[#FAF8F8]" : ""
               }`}
             >
-              <div className="min-w-[185px] h-[40px] flex ">
+              <div className="min-w-[185px] h-[40px] flex">
                 <div className="w-[40px] h-[40px]">
                   <Image
                     src={icon1}
                     alt="icon"
                     width={40}
                     height={40}
-                    className="rounded-full"
+                    style={{ borderRadius: '50%' }}
                   />
                 </div>
                 <div className="min-w-[135px] h-[40px] ml-2">
@@ -123,7 +117,7 @@ export default function AccountPage() {
                     alt="icon"
                     width={40}
                     height={40}
-                    className="rounded-full"
+                    style={{ borderRadius: '50%' }}
                   />
                 </div>
                 <div className="min-w-[135px] h-[40px] ml-2">
@@ -149,7 +143,7 @@ export default function AccountPage() {
                     alt="icon"
                     width={40}
                     height={40}
-                    className="rounded-full"
+                    style={{ borderRadius: '50%' }}
                   />
                 </div>
                 <div className="min-w-[135px] h-[40px] ml-2">
@@ -170,7 +164,7 @@ export default function AccountPage() {
                     alt="icon"
                     width={40}
                     height={40}
-                    className="rounded-full"
+                    style={{ borderRadius: '50%' }}
                   />
                 </div>
                 <div className="min-w-[135px] h-[40px] ml-2">

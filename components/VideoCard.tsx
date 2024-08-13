@@ -1,5 +1,5 @@
-// @ts-nocheck
 import React, { useState } from "react";
+import Image from "next/image";
 
 interface VideoCardProps {
   title: string;
@@ -47,25 +47,33 @@ const VideoCard: React.FC<VideoCardProps> = ({
 
   return (
     <div className="video-card p-2 cursor-pointer" onClick={onClick}>
-      <img
-        src={thumbnail}
-        alt={title}
-        className="w-full h-48 object-cover rounded-xl"
-      />
+      <div className="relative w-full h-48">
+        <Image
+          src={thumbnail}
+          alt={title}
+          fill
+          style={{ objectFit: "cover" }}
+          className="rounded-xl"
+        />
+      </div>
       <div className="p-2">
         <div className="flex justify-between items-center">
           <h2 className="text-[16px] text-[#0A0A0A] font-medium">{title}</h2>
           <div className="flex space-x-2">
-            <img
-              src={liked ? "heart-red.svg" : "heart.svg"}
+            <Image
+              src={liked ? "/heart-red.svg" : "/heart.svg"}
               alt="Like"
               onClick={handleLikeClick}
+              width={24}
+              height={24}
               className="cursor-pointer"
             />
-            <img
-              src="export.svg"
+            <Image
+              src="/export.svg"
               alt="Share"
               onClick={handleShareClick}
+              width={24}
+              height={24}
               className="cursor-pointer"
             />
           </div>

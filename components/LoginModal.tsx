@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import Btn1 from "../components/btn-1";
 import OtpModal from "./OtpModal";
+import Image from "next/image";
 
 interface LoginModalProps {
   isOpen: boolean;
@@ -32,10 +33,12 @@ const LoginModal: React.FC<LoginModalProps> = ({
                 <h2 className="font-bold text-[20px] text-black">Login</h2>
                 <button onClick={onClose}>
                   <div className="flex items-center">
-                    <img
-                      src="/exit.svg" // Replace with the path to your SVG in the public folder
+                  <Image
+                      src="/exit.svg" // Ensure this path is correct
                       alt="Close Icon"
-                      className="h-6 w-6 inline-block align-middle"
+                      width={24}
+                      height={24}
+                      className="inline-block align-middle"
                     />
                   </div>
                 </button>
@@ -53,10 +56,12 @@ const LoginModal: React.FC<LoginModalProps> = ({
                     className="w-full h-[40px] border border-[#2F2B431A] rounded-md outline-none text-black pl-2 pr-10 placeholder:text-[#B2AEBF] placeholder:text-xs"
                     placeholder="0808132536"
                   />
-                  <img
+                    <Image
                     src="/mtn.svg"
-                    alt="Icon"
-                    className="absolute right-2 top-1/2 transform -translate-y-1/2 h-4 w-4"
+                    alt="MTN Icon"
+                    width={16}
+                    height={16}
+                    className="absolute right-2 top-1/2 transform -translate-y-1/2"
                   />
                 </div>
               </div>
@@ -69,7 +74,7 @@ const LoginModal: React.FC<LoginModalProps> = ({
                   Continue
                 </a>
                 <p className="text-xs text-[#777777]">
-                Don't have an account? <a href="" className="text-[#BC1823] hover:underline">Register</a> 
+                Don&apos;t have an account? <a href="/register" className="text-[#BC1823] hover:underline">Register</a> 
                 </p>
               </div>
             </div>

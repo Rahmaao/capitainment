@@ -104,14 +104,7 @@ const SavedVideos = () => {
 
   return (
     <div className="profile-section h-[600px] lg:h-[474px] w-[350px] lg:w-auto flex flex-col justify-between">
-      <div className="min-h-[50px] lg:h-[50px]">
-        <h2 className="text-[20px] text-[#101828] font-medium text-left">
-          Saved Videos
-        </h2>
-        <p className="hidden lg:block text-[14px] text-[#777777] text-left">
-          Please read the terms and conditions of using this portal here.{" "}
-        </p>
-      </div>
+      
       <div className="w-[350px] lg:w-[640px] pt-4 rounded-lg bg-[#ffff] min-h-[585px] lg:h-[400px] flex flex-col justify-between">
           <div className="custom-scrollbar videos-container overflow-y-scroll grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-4">
           {videos.map((video) => (

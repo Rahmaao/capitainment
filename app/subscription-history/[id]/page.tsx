@@ -1,4 +1,3 @@
-// app/subscription-history/[id]/page.tsx
 "use client";
 
 import { useRouter } from "next/navigation";
@@ -59,7 +58,7 @@ export default function ReceiptPage({ params }: { params: { id: string } }) {
       <div className="w-full lg:w-[375px] h-full lg:h-[80%] bg-white border">
         <button
           className="w-full border-b h-[100px] lg:h-[70px] flex items-center"
-          onClick={() => router.back()} // Add the onClick handler to go back
+          onClick={() => router.back()}
         >
           <div className="w-[50px] h-[50px] flex justify-center items-center">
             <Image
@@ -72,61 +71,36 @@ export default function ReceiptPage({ params }: { params: { id: string } }) {
           </div>
           <div className="min-w-[125px] h-[50px] flex items-center pl-2">
             <h2 className="text-[20px] text-[#0A0A0A] font-bold text-left">
-              Profile
+              Receipt
             </h2>
           </div>
         </button>
         <div className="p-4 text-black">
           <div className="pb-4">
-            <p className="text-[10px] font-normal text-[#777777]">
-              Transaction Type:
-            </p>
-            <p className="text-[14px] font-normal text-[#100F0F]">
-              {receipt.type}
-            </p>
+            <p className="text-[10px] font-normal text-[#777777]">Transaction Type:</p>
+            <p className="text-[14px] font-normal text-[#100F0F]">{receipt.type}</p>
           </div>
           <div className="pb-4">
-            <p className="text-[10px] font-normal text-[#777777]">
-              Transaction ID:
-            </p>{" "}
-            
-            <p className="text-[14px] font-normal text-[#100F0F]">
-              {receipt.transactionId}
-            </p>
+            <p className="text-[10px] font-normal text-[#777777]">Transaction ID:</p>
+            <p className="text-[14px] font-normal text-[#100F0F]">{receipt.transactionId}</p>
           </div>
           <div className="pb-4">
-            <p className="text-[10px] font-normal text-[#777777]">
-              Payment Date:
-            </p>{" "}
-            
-            <p className="text-[14px] font-normal text-[#100F0F]">
-              {receipt.date}
-            </p>
+            <p className="text-[10px] font-normal text-[#777777]">Payment Date:</p>
+            <p className="text-[14px] font-normal text-[#100F0F]">{receipt.date}</p>
           </div>
           <div className="pb-4">
-            <p className="text-[10px] font-normal text-[#777777]">
-              Description:
-            </p>{" "}
-            
-            <p className="text-[14px] font-normal text-[#100F0F]">
-              {receipt.description}
-            </p>
+            <p className="text-[10px] font-normal text-[#777777]">Description:</p>
+            <p className="text-[14px] font-normal text-[#100F0F]">{receipt.description}</p>
           </div>
           <div className="pb-4">
-            <p className="text-[10px] font-normal text-[#777777]">Amount:</p>{" "}
-            
-            <p className="text-[14px] font-normal text-[#100F0F]">
-              {receipt.amount}
-            </p>
+            <p className="text-[10px] font-normal text-[#777777]">Amount:</p>
+            <p className="text-[14px] font-normal text-[#100F0F]">{receipt.amount}</p>
           </div>
           <div className="pb-4">
-            <p className="text-[10px] font-normal text-[#777777]">Status:</p>{" "}
-            
+            <p className="text-[10px] font-normal text-[#777777]">Status:</p>
             <p className={`text-[14px] font-normal ${
-                      receipt.status === "Successful"
-                        ? "text-green-500"
-                        : "text-red-500"
-                    }`}>
+              receipt.status === "Successful" ? "text-green-500" : "text-red-500"
+            }`}>
               {receipt.status}
             </p>
           </div>
