@@ -121,7 +121,10 @@ const VerifyOtp: React.FC<VerifyOtpProps> = ({
             <a
               href="/success"
               className="w-full h-10 bg-[#BC1823] rounded-xl flex items-center justify-center text-white font-medium text-sm hover:bg-[#f9858d] transition duration-300"
-              //   onClick={onVerify}
+              onClick={(e) => {
+                e.preventDefault();
+                onVerify(); // Call the onVerify function
+              }}
             >
               Verify
             </a>

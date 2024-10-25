@@ -2,7 +2,7 @@
 "use client";
 
 import React, { useState } from "react";
-import Categories from "./categories";
+import Categories from "./categories"
 import { Menu, Transition } from "@headlessui/react";
 
 const CategoriesContainer = () => {
