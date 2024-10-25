@@ -9,10 +9,10 @@ interface VerifyOtpProps {
   isOpen: boolean;
   onClose: () => void;
   onVerify: () => void;
-  onResend: () => void; // Add a new prop for the resend functionality
+  onResend: () => void;
 }
 
-const VerifyOtp: React.FC<VerifyOtpProps> = ({
+const VerifyOtpPage: React.FC<VerifyOtpProps> = ({
   isOpen,
   onClose,
   onVerify,
@@ -20,7 +20,7 @@ const VerifyOtp: React.FC<VerifyOtpProps> = ({
 }) => {
   const router = useRouter();
   const [otp, setOtp] = useState(Array(6).fill(""));
-  const [resendTimeout, setResendTimeout] = useState(30); // Countdown for the resend button
+  const [resendTimeout, setResendTimeout] = useState(30);
   const inputRefs = useRef<(HTMLInputElement | null)[]>([]);
 
   const handleChange = (value: string, index: number) => {
@@ -29,12 +29,10 @@ const VerifyOtp: React.FC<VerifyOtpProps> = ({
       newOtp[index] = value;
       setOtp(newOtp);
 
-      // Move to the next input field if a digit was entered
       if (value && index < otp.length - 1) {
         inputRefs.current[index + 1]?.focus();
       }
 
-      // Move to the previous input field if backspace was pressed and the field is empty
       if (!value && index > 0) {
         inputRefs.current[index - 1]?.focus();
       }
@@ -42,14 +40,12 @@ const VerifyOtp: React.FC<VerifyOtpProps> = ({
   };
 
   useEffect(() => {
-    // Focus on the first input field when the component mounts
     if (isOpen) {
       inputRefs.current[0]?.focus();
     }
   }, [isOpen]);
 
   useEffect(() => {
-    // Handle the countdown for the resend button
     if (resendTimeout > 0) {
       const timer = setTimeout(() => setResendTimeout(resendTimeout - 1), 1000);
       return () => clearTimeout(timer);
@@ -62,7 +58,7 @@ const VerifyOtp: React.FC<VerifyOtpProps> = ({
         <div className="h-[320px] flex flex-col justify-between">
           <button
             className="w-full border-b flex items-center"
-            onClick={() => router.back()} // Add the onClick handler to go back
+            onClick={() => router.back()}
           >
             <div className="w-[50px] h-[50px] flex justify-center items-center">
               <Image
@@ -110,7 +106,7 @@ const VerifyOtp: React.FC<VerifyOtpProps> = ({
                 className="text-sm text-[#BC1823] hover:underline"
                 onClick={() => {
                   onResend();
-                  setResendTimeout(30); // Reset the countdown
+                  setResendTimeout(30);
                 }}
               >
                 Resend OTP
@@ -123,7 +119,7 @@ const VerifyOtp: React.FC<VerifyOtpProps> = ({
               className="w-full h-10 bg-[#BC1823] rounded-xl flex items-center justify-center text-white font-medium text-sm hover:bg-[#f9858d] transition duration-300"
               onClick={(e) => {
                 e.preventDefault();
-                onVerify(); // Call the onVerify function
+                onVerify();
               }}
             >
               Verify
@@ -135,4 +131,5 @@ const VerifyOtp: React.FC<VerifyOtpProps> = ({
   );
 };
 
-export default VerifyOtp;
+// Default export
+export default VerifyOtpPage;
