@@ -5,6 +5,7 @@ import Image from "next/image";
 import back from "@/public/Back.svg";
 import { useRouter } from "next/navigation";
 
+// Define the type for props
 interface VerifyOtpProps {
   isOpen: boolean;
   onClose: () => void;
@@ -12,6 +13,7 @@ interface VerifyOtpProps {
   onResend: () => void;
 }
 
+// Create the component with props type
 const VerifyOtpPage: React.FC<VerifyOtpProps> = ({
   isOpen,
   onClose,
@@ -131,5 +133,5 @@ const VerifyOtpPage: React.FC<VerifyOtpProps> = ({
   );
 };
 
-// Default export
+// Correctly export the component
 export default VerifyOtpPage;
