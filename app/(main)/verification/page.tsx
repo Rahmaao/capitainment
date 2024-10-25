@@ -5,7 +5,7 @@ import Image from "next/image";
 import back from "@/public/Back.svg";
 import { useRouter } from "next/navigation";
 
-// Define the type for props
+// Define the type for props (keep it as a regular interface)
 interface VerifyOtpProps {
   isOpen: boolean;
   onClose: () => void;
