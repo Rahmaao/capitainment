@@ -2,7 +2,7 @@
 import axios from 'axios';
 
 const apiClient = axios.create({
-  baseURL: 'http://nneoma2-001-site1.ftempurl.com',
+  baseURL: 'https://nneoma2-001-site1.ftempurl.com',
   headers: {
     'Content-Type': 'application/json',
   },
